@@ -1,0 +1,394 @@
+<div id="pdf" style="margin: 10px; padding: 20px">
+  <header class="flex" style="padding: 6px 10px; justify-content: space-around">
+    <div
+      style="
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        padding-left: 7%;
+      "
+      class=""
+    >
+      <img style="height: 210px" src="../../../assets/logo.png" alt="" />
+    </div>
+
+    <div style="margin-top: 10px; text-align: center; font-size: 22px">
+      <h2 style="font-size: 28px">MULTIFORMA SEMENTES DE PASTAGEM</h2>
+      <p>Rua Dr. Nicola Casal Caminha, n 187 - Polo Empresarial Norte</p>
+      <p>Cep 79.018-815 - Campo Grande - MS</p>
+      <p>Contato: (67) 3026-2600</p>
+      <p [innerHTML]="'E-mail: multiformasementes@dasdas.com'"></p>
+      <p>multiformasementes.com.br</p>
+    </div>
+  </header>
+
+  <table style="margin-bottom: 80px; font-size: 20px; margin-top: 50px">
+    <tbody>
+      <tr style="text-align: center">
+        <td style="width: 33%; font-weight: bold">PEDIDO: N {{ pedido }}</td>
+        <td style="width: 33%; font-weight: bold">
+          EMITIDO EM: {{ dataHoje | date : "dd/MM/yyyy" }}
+        </td>
+        <td style="width: 33%; font-weight: bold">
+          VENDEDOR:
+          <app-editable
+            [value]="cliente.vendedor"
+            (valueChange)="saveProjectName('cliente', 'vendedor', $event, 0)"
+          >
+          </app-editable>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table-cliente" style="margin-bottom: 80px">
+    <thead>
+      <tr>
+        <th style="font-size: 20px" colspan="6">DADOS DO CLIENTE</th>
+      </tr>
+    </thead>
+
+    <tbody style="font-size: 20px">
+      <tr>
+        <td style="width: 120px" class="table-cliente-header">CLIENTE:</td>
+        <td colspan="5">
+          <app-editable
+            [value]="cliente.nome"
+            (valueChange)="saveProjectName('cliente', 'nome', $event, 0)"
+          >
+          </app-editable>
+
+          <!-- {{ cliente.nome }} -->
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width: 120px" class="table-cliente-header">TELEFONE:</td>
+        <td>
+          <app-editable
+            [value]="cliente.numero"
+            (valueChange)="saveProjectName('cliente', 'numero', $event, 0)"
+            [type]="'numero'"
+          >
+          </app-editable>
+        </td>
+        <td style="width: 120px" class="table-cliente-header">EMAIL:</td>
+        <td colspan="3">
+          <app-editable
+            [value]="cliente.email"
+            (valueChange)="saveProjectName('cliente', 'email', $event, 0)"
+            [type]="'email'"
+          >
+          </app-editable>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width: 120px" class="table-cliente-header">CNPJ:</td>
+        <td>
+          <app-editable
+            [value]="cliente.cnpj"
+            (valueChange)="saveProjectName('cliente', 'cnpj', $event, 0)"
+            [type]="'cnpj'"
+          >
+          </app-editable>
+        </td>
+        <td style="width: 160px" class="table-cliente-header">
+          Insc. Estadual:
+        </td>
+        <td style="width: 220px">
+          <app-editable
+            [value]="cliente.inscricao"
+            (valueChange)="saveProjectName('cliente', 'inscricao', $event, 0)"
+          >
+          </app-editable>
+        </td>
+
+        <td style="width: 120px" class="table-cliente-header">CEP:</td>
+        <td style="width: 170px">
+          <app-editable
+            type="cep"
+            [value]="cliente.cep"
+            (valueChange)="saveProjectName('cliente', 'cep', $event, 0)"
+          >
+          </app-editable>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width: 120px" class="table-cliente-header">Cidade:</td>
+        <td>
+          <app-editable
+            [value]="cliente.cidade"
+            (valueChange)="saveProjectName('cliente', 'cidade', $event, 0)"
+          >
+          </app-editable>
+        </td>
+        <td style="width: 120px" class="table-cliente-header">Estado:</td>
+        <td>
+          <app-editable
+            [value]="cliente.estado"
+            (valueChange)="saveProjectName('cliente', 'estado', $event, 0)"
+          >
+          </app-editable>
+        </td>
+        <td style="width: 120px" class="table-cliente-header">Bairro:</td>
+        <td>
+          <app-editable
+            [value]="cliente.bairro"
+            (valueChange)="saveProjectName('cliente', 'bairro', $event, 0)"
+          >
+          </app-editable>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width: 120px" class="table-cliente-header">Fazenda:</td>
+        <td>
+          <app-editable
+            [value]="cliente.fazenda"
+            (valueChange)="saveProjectName('cliente', 'fazenda', $event, 0)"
+          >
+          </app-editable>
+        </td>
+        <td style="width: 180px" class="table-cliente-header">
+          Prazo Entrega:
+        </td>
+        <td colspan="4">
+          <app-editable
+            [value]="cliente.prazo"
+            (valueChange)="saveProjectName('cliente', 'prazo', $event, 0)"
+          >
+          </app-editable>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table-cliente table-items" style="font-size: 20px">
+    <thead>
+      <tr>
+        <th colspan="6">ORÇAMENTO</th>
+      </tr>
+    </thead>
+
+    <thead>
+      <tr>
+        <th style="width: 70px">COD.</th>
+        <th style="width: auto">Produto</th>
+
+        <th style="width: 180px">Quant.</th>
+
+        <th style="width: 250px">Valor</th>
+        <th style="width: 250px">Sub-Total</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (item of items; track item; let indice = $index){
+      <tr style="position: relative">
+        <td style="text-align: center">{{ item.codigo }}</td>
+
+        <td style="text-align: left">{{ item.descricao }}</td>
+        <td style="text-align: center">
+          <app-editable
+            [value]="item.quantidade"
+            (valueChange)="
+              saveProjectName('item', 'quantidade', $event, indice)
+            "
+          >
+          </app-editable>
+          {{ item.unid }}
+        </td>
+        <td style="text-align: right">
+          <app-editable
+            [value]="item.valor"
+            [currency]="true"
+            (valueChange)="saveProjectName('item', 'valor', $event, indice)"
+          >
+          </app-editable>
+        </td>
+        <td style="text-align: right">
+          {{
+            item.quantidade * item.valor
+              | currency : "BRL" : "symbol" : "0.2-2" : "pt"
+          }}
+        </td>
+
+        @if(!gerandoPdf){
+        <button
+          (click)="removeItem(indice)"
+          style="
+            position: absolute;
+            left: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+          "
+        >
+          remover</button
+        >}
+      </tr>
+
+      }
+      <!-- <tr>
+        <td style="text-align: center">005</td>
+
+        <td style="text-align: left">Zuri 80% VC Grafitada</td>
+        <td style="text-align: center">800 kg</td>
+        <td style="text-align: right">R$ 15,00</td>
+        <td style="text-align: right">R$ 12.000,00</td>
+      </tr>
+
+      <tr>
+        <td style="text-align: center">005</td>
+
+        <td style="text-align: left">Zuri 80% VC Grafitada</td>
+        <td style="text-align: center">800 kg</td>
+        <td style="text-align: right">R$ 15,00</td>
+        <td style="text-align: right">R$ 12.000,00</td>
+      </tr>
+
+      <tr>
+        <td style="text-align: center">005</td>
+
+        <td style="text-align: left">Zuri 80% VC Grafitada</td>
+        <td style="text-align: center">800 kg</td>
+        <td style="text-align: right">R$ 15,00</td>
+        <td style="text-align: right">R$ 12.000,00</td>
+      </tr>
+
+      <tr>
+        <td style="text-align: center">005</td>
+
+        <td style="text-align: left">Zuri 80% VC Grafitada</td>
+        <td style="text-align: center">800 kg</td>
+        <td style="text-align: right">R$ 15,00</td>
+        <td style="text-align: right">R$ 12.000,00</td>
+      </tr> -->
+    </tbody>
+  </table>
+
+  @if(!gerandoPdf){
+  <div style="text-align: center">
+    <select
+      (change)="onSelectMercadoria($event, 3)"
+      style="margin-right: 10px; padding: 10px 22px"
+    >
+      <option style="font-size: 22px; padding: 8px 22px" [value]="-1">
+        Produto
+      </option>
+      <option
+        style="font-size: 22px; padding: 12px 22px"
+        *ngFor="let mercadoria of mercadoriasSolupan; let indice = index"
+        [value]="indice"
+      >
+        {{ mercadoria.descricao.replace("Solupan", "") }}
+      </option>
+    </select>
+  </div>
+  }
+
+  <table class="table-cliente" style="font-size: 20px">
+    <thead>
+      <tr>
+        <th style="border: none !important">SUB-TOTAL GERAL:</th>
+        <th style="border: none !important">DESCONTO:</th>
+
+        <th style="border: none !important">TOTAL GERAL</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td
+          style="
+            border: none !important;
+            font-size: 20px;
+            text-align: center;
+            width: 33%;
+          "
+        >
+          {{ valorTotalItems | currency : "BRL" : "symbol" : "0.2-2" : "pt" }}
+        </td>
+        <td
+          style="
+            border: none !important;
+            font-size: 20px;
+            text-align: center;
+            width: 33%;
+          "
+        ></td>
+        <td
+          style="
+            border: none !important;
+            font-size: 20px;
+            text-align: center;
+            width: 33%;
+          "
+        >
+          {{ valorTotalItems | currency : "BRL" : "symbol" : "0.2-2" : "pt" }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table-observacao" style="margin-top: 60px">
+    <tbody>
+      <tr>
+        <td style="width: 180px; font-weight: bold; text-align: center">
+          OBSERVAÇÕES:
+        </td>
+        <td style="border-top: none !important; padding: 20px"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div
+    style="
+      display: flex;
+      margin-top: 160px;
+      justify-content: space-around;
+      padding: 30px;
+    "
+  >
+    <div
+      style="
+        border-top: 1px solid;
+        padding-bottom: 10px;
+        width: 30%;
+        text-align: center;
+        margin-top: 100px;
+      "
+    >
+      <div style="margin-top: 10px; font-weight: bold">MULTIFORMA SEMENTES</div>
+    </div>
+
+    <div
+      style="
+        border-top: 1px solid;
+        padding-bottom: 10px;
+        width: 30%;
+        text-align: center;
+        margin-top: 120px;
+      "
+    >
+      <div style="margin-top: 10px; font-weight: bold">
+        {{ cliente.nome | uppercase }}
+      </div>
+    </div>
+  </div>
+  @if(!gerandoPdf){
+  <div class="center-flex">
+    <button (click)="gerarPDF()">Gerar PDF</button>
+  </div>
+  }
+  <div id="preview-container"></div>
+</div>
+
+@if(!gerandoPdf){
+<app-editable
+  [fullCliente]="cliente"
+  (valueCleinteChangeEvents)="cliente = $event"
+>
+</app-editable>
+}

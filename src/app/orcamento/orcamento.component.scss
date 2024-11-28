@@ -67,56 +67,8 @@
 
 p {
     margin-top: 8px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
-}
-
-.cliente {
-    border-left: 1px solid;
-    border-right: 1px solid;
-    border-bottom: 1px solid;
-}
-
-h2,
-h4 {
-    text-transform: uppercase;
-    font-weight: 700;
-}
-
-.order {
-    p {
-        font-weight: 800;
-        font-size: 18px;
-        margin-top: 0px;
-    }
-}
-
-.orcamento {
-    margin-top: 4px;
-    border: 1px solid;
-    text-align: center;
-    padding: 10px;
-
-    h4 {
-        font-weight: 900;
-    }
-}
-
-.produto {
-    &-item {
-        border-bottom: 1px dashed;
-    }
-}
-
-table {
-    border-collapse: collapse;
-    margin-top: 20px;
-    border-spacing: 30px;
-}
-
-thead {
-    border-bottom: 1px solid;
-    text-align: left;
 }
 
 
@@ -131,7 +83,6 @@ td {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid;
     padding-bottom: 10px;
     margin-top: 60px;
 
@@ -169,7 +120,6 @@ table:hover {
     border-radius: 4px;
     padding: 6px 10px;
 
-    border: 1px solid;
 
     margin-top: 80px;
 
@@ -180,4 +130,44 @@ table:hover {
             font-weight: 900;
         }
     }
+}
+
+table {
+    width: 100%;
+
+}
+
+table
+
+ {
+    border: 1px solid black;
+}
+
+td, th { 
+    border-top: 1px solid;
+    border-right: 1px solid;
+}
+
+.table-cliente {
+
+    td {
+        padding: 8px 10px;
+    }
+}
+
+.table-cliente-header {
+    text-transform: uppercase;
+    font-weight: bold;
+    width: fit-content;
+}
+
+.table-items {
+    text-transform: uppercase;
+
+    margin-bottom: 80px;
+    border-top: 2px solid;
+
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }

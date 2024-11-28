@@ -1,0 +1,34 @@
+table { 
+    width: 100%;
+
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+.table-cliente { 
+
+    td { 
+        padding: 8px 10px;
+    }
+}
+
+.table-cliente-header { 
+text-transform: uppercase;
+    font-weight: bold;
+    width: fit-content;
+}
+
+.table-items{ 
+    text-transform: uppercase;
+
+    margin-bottom: 30px;
+    border-top: 3px solid;
+
+    box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+}

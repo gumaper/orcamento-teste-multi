@@ -1,0 +1,190 @@
+@if (isEditing){
+<div class="editor">
+  @if(type === 'text' && !textarea){
+  <input
+    type="text"
+    name="value"
+    autofocus
+    [(ngModel)]="pendingValue"
+    (keydown.Enter)="processChanges()"
+    (keydown.Meta.Enter)="processChanges()"
+    (keydown.Escape)="cancel()"
+    (focusout)="processChanges()"
+    (blur)="processChanges()"
+  />} @if(type === 'numero' && !textarea){
+  <input
+    mask="(00) 0000-0000||(00) 00000-0000"
+    type="type"
+    name="value"
+    autofocus
+    [(ngModel)]="pendingValue"
+    (keydown.Enter)="processChanges()"
+    (keydown.Meta.Enter)="processChanges()"
+    (keydown.Escape)="cancel()"
+    (focusout)="processChanges()"
+    (blur)="processChanges()"
+    style="width: 120px"
+  />
+  } @if (textarea){
+  <textarea
+    rows="6"
+    style="width: 100%"
+    type="type"
+    name="value"
+    autofocus
+    (focusout)="processChanges()"
+    (blur)="processChanges()"
+    [(ngModel)]="pendingValue"
+    (keydown.Escape)="cancel()"
+  ></textarea>
+  } @if(type === 'cnpj') {
+  <input
+    mask="00.000.000/0000-00"
+    name="value"
+    autofocus
+    (focusout)="processChanges()"
+    (blur)="processChanges()"
+    [(ngModel)]="pendingValue"
+    (keydown.Enter)="processChanges()"
+    (keydown.Meta.Enter)="processChanges()"
+    (keydown.Escape)="cancel()"
+    style="width: 150px"
+  />
+  } @if(type === 'email') {
+  <input
+    type="email"
+    autofocus
+    (focusout)="processChanges()"
+    (blur)="processChanges()"
+    [(ngModel)]="pendingValue"
+    (keydown.Enter)="processChanges()"
+    (keydown.Meta.Enter)="processChanges()"
+    (keydown.Escape)="cancel()"
+    style="width: 150px"
+  />
+  } @if(type === 'cep') {
+  <input
+    type="text"
+    autofocus
+    mask="00000-00"
+    (focusout)="processChanges()"
+    (blur)="processChanges()"
+    [(ngModel)]="pendingValue"
+    (keydown.Enter)="processChanges()"
+    (keydown.Meta.Enter)="processChanges()"
+    (keydown.Escape)="cancel()"
+  />
+  }
+  <!-- <button (click)="processChanges()">Save</button> -->
+  <!-- <a (click)="cancel()" (keydown.Enter)="cancel()" tabindex="0">X</a> -->
+</div>
+} @else { @if (currency) {
+<span style="cursor: pointer" (click)="edit()">
+  {{ value | currency : "BRL" : "symbol" : "0.2-2" : "pt" }}
+</span>
+} @else if (type === 'numero') {
+<span style="cursor: pointer" (click)="edit()">
+  {{ value | mask : "(00) 0000-0000||(00) 00000-0000" }}
+</span>
+} @else if (type === 'cnpj') {
+<span style="cursor: pointer" (click)="edit()">
+  {{ value | mask : "00.000.000/0000-00" }}
+</span>
+}@else {
+<span style="cursor: pointer" (click)="edit()"> {{ value }} </span>
+} } @if (fullCliente){
+<div class="editor" style="display: flex; flex-wrap: wrap; gap: 20px">
+  <div>
+    <p>Nome</p>
+    <input
+      type="text"
+      [(ngModel)]="fullCliente.nome"
+      style="width: 300px; font-size: 22px; padding: 10px 22px"
+    />
+  </div>
+
+  <div>
+    <p>Telefone</p>
+    <input
+      mask="(00) 0000-0000"
+      type="type"
+      style="width: 300px; font-size: 22px; padding: 10px 22px"
+      [(ngModel)]="fullCliente.numero"
+    />
+  </div>
+
+  <div>
+    <p>CNPJ</p>
+    <input
+      mask="00.000.000/0000-00"
+      style="width: 300px; font-size: 22px; padding: 10px 22px"
+      [(ngModel)]="fullCliente.cnpj"
+    />
+  </div>
+
+  <div>
+    <p>Email</p>
+    <input
+      [(ngModel)]="fullCliente.email"
+      style="width: 300px; font-size: 22px; padding: 10px 22px"
+    />
+  </div>
+
+  <div>
+    <p>Cidade</p>
+    <input
+      [(ngModel)]="fullCliente.cidade"
+      style="width: 300px; font-size: 22px; padding: 10px 22px"
+    />
+  </div>
+
+  <div>
+    <p>Estado</p>
+    <input
+      [(ngModel)]="fullCliente.estado"
+      style="width: 300px; font-size: 22px; padding: 10px 22px"
+    />
+  </div>
+
+  <div>
+    <p>Bairro</p>
+    <input
+      [(ngModel)]="fullCliente.bairro"
+      style="width: 300px; font-size: 22px; padding: 10px 22px"
+    />
+  </div>
+
+  <div>
+    <p>CEP</p>
+    <input
+      mask="00000-00"
+      [(ngModel)]="fullCliente.cep"
+      style="width: 300px; font-size: 22px; padding: 10px 22px"
+    />
+  </div>
+
+  <div>
+    <p>Fazenda</p>
+    <input
+      [(ngModel)]="fullCliente.fazenda"
+      style="width: 300px; font-size: 22px; padding: 10px 22px"
+    />
+  </div>
+
+  <div>
+    <p>Inscrição</p>
+    <input
+      [(ngModel)]="fullCliente.inscricao"
+      style="width: 300px; font-size: 22px; padding: 10px 22px"
+    />
+  </div>
+
+  <div>
+    <p>Prazo</p>
+    <input
+      [(ngModel)]="fullCliente.prazo"
+      style="width: 300px; font-size: 22px; padding: 10px 22px"
+    />
+  </div>
+</div>
+}
