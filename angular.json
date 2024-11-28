@@ -32,14 +32,14 @@
           "skipTests": true
         }
       },
-      "root": "orcamento-teste-multi",
+      "root": "",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "docs/orcamento-teste-multi/",
+            "outputPath": "docs",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
