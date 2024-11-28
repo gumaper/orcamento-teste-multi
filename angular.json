@@ -32,7 +32,7 @@
           "skipTests": true
         }
       },
-      "root": "",
+      "root": "orcamento-teste-multi",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
