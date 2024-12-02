@@ -133,28 +133,28 @@ export class OrcamentoComponent implements OnInit {
 
     {
       codigo: '00711',
-      descricao: 'DOCUMBENS 50 V.C CONVENCIONAL',
+      descricao: 'DECUMBENS 50 V.C CONVENCIONAL',
       unid: 'KG',
       quantidade: 100,
       valor: 0,
     },
     {
       codigo: '00712',
-      descricao: 'DOCUMBENS 80 V.C GRAFITADA',
+      descricao: 'DECUMBENS 80 V.C GRAFITADA',
       unid: 'KG',
       quantidade: 100,
       valor: 0,
     },
     {
       codigo: '00713',
-      descricao: 'DOCUMBENS 80 V.C PURA',
+      descricao: 'DECUMBENS 80 V.C PURA',
       unid: 'KG',
       quantidade: 1,
       valor: 50,
     },
     {
       codigo: '00714',
-      descricao: 'DOCUMBENS 80 V.C REVESTIDA',
+      descricao: 'DECUMBENS 80 V.C REVESTIDA',
       unid: 'KG',
       quantidade: 1,
       valor: 12,
