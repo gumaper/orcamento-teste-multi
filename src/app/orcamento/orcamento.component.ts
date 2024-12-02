@@ -301,6 +301,54 @@ export class OrcamentoComponent implements OnInit {
       quantidade: 1,
       valor: 0,
     },
+
+    {
+      codigo: '03151',
+      descricao: 'NABO FORRAGEIRO',
+      unid: 'KG',
+      quantidade: 1,
+      valor: 0,
+    },
+
+    {
+      codigo: '03152',
+      descricao: 'AVEIA',
+      unid: 'KG',
+      quantidade: 1,
+      valor: 0,
+    },
+
+    {
+      codigo: '03153',
+      descricao: 'AVEIA PRETA',
+      unid: 'KG',
+      quantidade: 1,
+      valor: 0,
+    },
+
+    {
+      codigo: '03154',
+      descricao: 'TRIGO MOURISCO',
+      unid: 'KG',
+      quantidade: 1,
+      valor: 0,
+    },
+
+    {
+      codigo: '03155',
+      descricao: 'FEIJÃO GUANDY',
+      unid: 'KG',
+      quantidade: 1,
+      valor: 0,
+    },
+
+    {
+      codigo: '03156',
+      descricao: 'CAPIM SUDÃO',
+      unid: 'KG',
+      quantidade: 1,
+      valor: 0,
+    },
   ];
 
   items: any[] = [];
@@ -400,6 +448,8 @@ export class OrcamentoComponent implements OnInit {
   }
 
   onSelectMercadoria(mercadoria: any, tipo: number) {
+    console.log(mercadoria);
+    console.log(this.items);
     this.items.push(this.mercadoriasSolupan[mercadoria.target.value]);
 
     this.calcSubTotal();
