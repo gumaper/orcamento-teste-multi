@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   OnInit,
@@ -63,6 +64,7 @@ export class OrcamentoComponent implements OnInit {
     cidade: 'Campo Grande - MS',
     cep: '79560-000',
     cnpj: '123123123000178',
+    cpf: '12332112333',
     fazenda: 'nome fazenda',
     email: 'email',
     inscricao: 'inscricao',
@@ -70,6 +72,7 @@ export class OrcamentoComponent implements OnInit {
     bairro: 'bairro',
     prazo: 'prazo',
     vendedor: 'vendedor',
+    tipoPagamento: 'Boleto',
   };
 
   mercadoriasSolupan: any[] = [
@@ -375,7 +378,10 @@ export class OrcamentoComponent implements OnInit {
     });
   }
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _formBuilder: FormBuilder
+  ) {}
 
   // ---
   // PUBLIC METHODS.
@@ -439,11 +445,12 @@ export class OrcamentoComponent implements OnInit {
 
         // Salvando o PDF
         pdf.save(this.pedido + '.pdf');
-      });
 
-      setTimeout(() => {
-        this.gerandoPdf = false;
-      }, 5000);
+        setTimeout(() => {
+          this.gerandoPdf = false;
+          this._changeDetectorRef.markForCheck();
+        }, 2000);
+      });
     }, 1000);
   }
 

@@ -48,14 +48,14 @@
   <table class="table-cliente" style="margin-bottom: 80px">
     <thead>
       <tr>
-        <th style="font-size: 20px" colspan="6">DADOS DO CLIENTE</th>
+        <th style="font-size: 20px" colspan="8">DADOS DO CLIENTE</th>
       </tr>
     </thead>
 
     <tbody style="font-size: 20px">
       <tr>
         <td style="width: 120px" class="table-cliente-header">CLIENTE:</td>
-        <td colspan="5">
+        <td colspan="7">
           <app-editable
             [value]="cliente.nome"
             (valueChange)="saveProjectName('cliente', 'nome', $event, 0)"
@@ -76,8 +76,8 @@
           >
           </app-editable>
         </td>
-        <td style="width: 120px" class="table-cliente-header">EMAIL:</td>
-        <td colspan="3">
+        <td style="width: 130px" class="table-cliente-header">EMAIL:</td>
+        <td colspan="5">
           <app-editable
             [value]="cliente.email"
             (valueChange)="saveProjectName('cliente', 'email', $event, 0)"
@@ -88,7 +88,7 @@
       </tr>
 
       <tr>
-        <td style="width: 120px" class="table-cliente-header">CNPJ:</td>
+        <td style="width: 100px" class="table-cliente-header">CNPJ:</td>
         <td>
           <app-editable
             [value]="cliente.cnpj"
@@ -97,7 +97,16 @@
           >
           </app-editable>
         </td>
-        <td style="width: 160px" class="table-cliente-header">
+        <td style="width: 130px" class="table-cliente-header">CPF:</td>
+        <td style="width: 180px">
+          <app-editable
+            [value]="cliente.cpf"
+            (valueChange)="saveProjectName('cliente', 'cpf', $event, 0)"
+            [type]="'cpf'"
+          >
+          </app-editable>
+        </td>
+        <td style="width: 220px" class="table-cliente-header">
           Insc. Estadual:
         </td>
         <td style="width: 220px">
@@ -121,14 +130,14 @@
 
       <tr>
         <td style="width: 120px" class="table-cliente-header">Cidade:</td>
-        <td>
+        <td style="width: 240px">
           <app-editable
             [value]="cliente.cidade"
             (valueChange)="saveProjectName('cliente', 'cidade', $event, 0)"
           >
           </app-editable>
         </td>
-        <td style="width: 120px" class="table-cliente-header">Estado:</td>
+        <td style="width: 130px" class="table-cliente-header">Estado:</td>
         <td>
           <app-editable
             [value]="cliente.estado"
@@ -136,8 +145,8 @@
           >
           </app-editable>
         </td>
-        <td style="width: 120px" class="table-cliente-header">Bairro:</td>
-        <td>
+        <td style="width: 130px" class="table-cliente-header">Bairro:</td>
+        <td colspan="3">
           <app-editable
             [value]="cliente.bairro"
             (valueChange)="saveProjectName('cliente', 'bairro', $event, 0)"
@@ -155,13 +164,28 @@
           >
           </app-editable>
         </td>
-        <td style="width: 180px" class="table-cliente-header">
+        <td style="width: 220px" class="table-cliente-header">
           Prazo Entrega:
         </td>
-        <td colspan="4">
+        <td colspan="2">
           <app-editable
+            style="min-width: 220px"
             [value]="cliente.prazo"
             (valueChange)="saveProjectName('cliente', 'prazo', $event, 0)"
+          >
+          </app-editable>
+        </td>
+
+        <td style="width: 200px" class="table-cliente-header">
+          Tipo Pagamento:
+        </td>
+        <td colspan="2">
+          <app-editable
+            style="min-width: 220px"
+            [value]="cliente.tipoPagamento"
+            (valueChange)="
+              saveProjectName('cliente', 'tipoPagamento', $event, 0)
+            "
           >
           </app-editable>
         </td>
@@ -193,7 +217,14 @@
       <tr style="position: relative">
         <td style="text-align: center">{{ item.codigo }}</td>
 
-        <td style="text-align: left">{{ item.descricao }}</td>
+        <td style="text-align: left">
+          <app-editable
+            [value]="item.descricao"
+            (valueChange)="saveProjectName('item', 'descricao', $event, indice)"
+          >
+          </app-editable>
+          <!-- {{ item.descricao }} -->
+        </td>
         <td style="text-align: center">
           <app-editable
             [value]="item.quantidade"
@@ -224,7 +255,7 @@
           (click)="removeItem(indice)"
           style="
             position: absolute;
-            left: 5%;
+            left: 0;
             top: 50%;
             transform: translateY(-50%);
           "

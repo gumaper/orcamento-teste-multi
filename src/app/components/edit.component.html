@@ -49,7 +49,20 @@
     (keydown.Meta.Enter)="processChanges()"
     (keydown.Escape)="cancel()"
     style="width: 150px"
+  />} @if(type === 'cpf') {
+  <input
+    mask="000.000.000-00"
+    name="value"
+    autofocus
+    (focusout)="processChanges()"
+    (blur)="processChanges()"
+    [(ngModel)]="pendingValue"
+    (keydown.Enter)="processChanges()"
+    (keydown.Meta.Enter)="processChanges()"
+    (keydown.Escape)="cancel()"
+    style="width: 150px"
   />
+
   } @if(type === 'email') {
   <input
     type="email"
@@ -88,9 +101,15 @@
 </span>
 } @else if (type === 'cnpj') {
 <span style="cursor: pointer" (click)="edit()">
-  {{ value | mask : "00.000.000/0000-00" }}
+  {{ value | mask : "00.000.000/0000-00" }} </span
+>} @else if (type === 'cpf') {
+<span style="cursor: pointer" (click)="edit()">
+  {{ value | mask : "000.000.000-00" }}
 </span>
-}@else {
+}@else if (type === 'cep') {
+<span style="cursor: pointer" (click)="edit()">
+  {{ value | mask : "00000-000" }} </span
+>}@else {
 <span style="cursor: pointer" (click)="edit()"> {{ value }} </span>
 } } @if (fullCliente){
 <div class="editor" style="display: flex; flex-wrap: wrap; gap: 20px">
