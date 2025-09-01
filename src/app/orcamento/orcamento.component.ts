@@ -41,6 +41,10 @@ export class OrcamentoComponent implements OnInit {
   form: FormGroup = new FormGroup({});
 
   clienteForm: FormGroup = new FormGroup({});
+  desconto: number = 0;
+  valorTotalItemsSemDesconto: number = 0;
+
+  teste: any;
 
   pedido: string = '000' + Math.floor(Math.random() * 65536).toString();
 
@@ -496,14 +500,26 @@ export class OrcamentoComponent implements OnInit {
 
   calcSubTotal() {
     this.valorTotalItems = 0;
-
+    this.valorTotalItemsSemDesconto = 0;
     this.items.forEach(
       (el) => (this.valorTotalItems += el.quantidade * el.valor)
     );
+
+    this.items.forEach(
+      (el) => (this.valorTotalItemsSemDesconto += el.quantidade * el.valor)
+    );
+
+    this.valorTotalItems -= this.desconto;
 
     let total: number =
       this.total.acrecimo + this.total.servico + this.valorTotalItems;
 
     this.total.total = total - (total * this.total.desconto) / 100;
+  }
+
+  calcularDesconto(event: any) {
+    this.desconto = event.target.value;
+
+    this.calcSubTotal();
   }
 }

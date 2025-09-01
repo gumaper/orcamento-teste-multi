@@ -343,7 +343,10 @@
             width: 33%;
           "
         >
-          {{ valorTotalItems | currency : "BRL" : "symbol" : "0.2-2" : "pt" }}
+          {{
+            valorTotalItemsSemDesconto
+              | currency : "BRL" : "symbol" : "0.2-2" : "pt"
+          }}
         </td>
         <td
           style="
@@ -352,7 +355,9 @@
             text-align: center;
             width: 33%;
           "
-        ></td>
+        >
+          {{ desconto | currency : "BRL" : "symbol" : "0.2-2" : "pt" }}
+        </td>
         <td
           style="
             border: none !important;
@@ -413,8 +418,21 @@
     </div>
   </div>
   @if(!gerandoPdf){
-  <div class="center-flex">
-    <button (click)="gerarPDF()">Gerar PDF</button>
+  <div class="center-flex flex-column" style="flex-direction: column">
+    <div>
+      <label>Desconto</label>
+      <input
+        style="width: 300px; font-size: 22px; padding: 10px 22px"
+        (input)="calcularDesconto($event)"
+        type="number"
+      />
+    </div>
+
+    <br />
+
+    <div>
+      <button class="btn" (click)="gerarPDF()">Gerar PDF</button>
+    </div>
   </div>
   }
   <div id="preview-container"></div>
