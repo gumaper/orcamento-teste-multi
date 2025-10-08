@@ -73,7 +73,7 @@ export class OrcamentoComponent implements OnInit {
     email: 'email',
     inscricao: 'inscricao',
     estado: 'MS',
-    bairro: 'bairro',
+    bairro: 'endereço',
     prazo: 'prazo',
     vendedor: 'vendedor',
     tipoPagamento: 'Boleto',
