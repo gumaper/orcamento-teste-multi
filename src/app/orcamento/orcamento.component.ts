@@ -50,7 +50,7 @@ export class OrcamentoComponent implements OnInit {
 
   dataHoje: Date = new Date();
 
-  vendedor: string = '';
+  vendedor: string = '#';
 
   clienteNome: FormControl = new FormControl();
 
@@ -62,21 +62,21 @@ export class OrcamentoComponent implements OnInit {
   gerandoPdf: boolean = false;
 
   cliente: any = {
-    nome: '',
-    numero: '',
-    endereco: '',
-    cidade: '',
-    cep: '',
-    cnpj: '',
-    cpf: '',
-    fazenda: '',
-    email: '',
-    inscricao: '',
-    estado: '',
-    bairro: '',
-    prazo: '',
-    vendedor: '',
-    tipoPagamento: '',
+    nome: '#',
+    numero: '#',
+    endereco: '#',
+    cidade: '#',
+    cep: '00000000',
+    cnpj: '00000000000000',
+    cpf: '00000000000',
+    fazenda: '#',
+    email: '#',
+    inscricao: '#',
+    estado: '#',
+    bairro: '#',
+    prazo: '#',
+    vendedor: '#',
+    tipoPagamento: '#',
   };
 
   mercadoriasSolupan: any[] = [
@@ -375,7 +375,7 @@ export class OrcamentoComponent implements OnInit {
   adicionarItem() {
     this.items.push({
       codigo: '1',
-      descricao: '',
+      descricao: '#',
       unid: 'KG',
       quantidade: 1,
       valor: 50,
@@ -417,7 +417,7 @@ export class OrcamentoComponent implements OnInit {
     this.form = this._formBuilder.group({});
 
     this.clienteForm = this._formBuilder.group({
-      nome: [''],
+      nome: ['#'],
       endereco: [''],
       email: [''],
       contato: [''],
